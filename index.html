@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0; /* Background color */
+        }
+        #attendance-form {
+            margin: 20px;
+        }
+        #attendance-list {
+            text-align: left;
+            background-color: #fff; /* Background color for attendance list */
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Attendance</h1>
+    <form id="attendance-form">
+        <label for="subjectName">Subject Name:</label>
+        <input type="text" id="subjectName" required>
+        <br>
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" required>
+        <br>
+        <button type="button" onclick="markAttendance()">Mark Attendance</button>
+    </form>
+    <div id="attendance-list">
+        <h2>Attendance List</h2>
+        <p id="subject">Subject: </p>
+        <ul id="attendance-ul"></ul>
+    </div>
+    <script>
+        function markAttendance() {
+            var studentName = document.getElementById("studentName").value;
+            var subjectName = document.getElementById("subjectName").value;
+
+            if (studentName.trim() !== "") {
+                var ul = document.getElementById("attendance-ul");
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(studentName));
+                ul.appendChild(li);
+                document.getElementById("studentName").value = "";
+            }
+
+            if (subjectName.trim() !== "") {
+                var subject = document.getElementById("subject");
+                subject.innerHTML = "Subject: " + subjectName;
+                document.getElementById("subjectName").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
